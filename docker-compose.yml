@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  node:
+    images: ghcr.io/base-org/node:v0.3.1-rc.2
+    ports:
+      - 7545:7545     # RPC
+ #     - 9222:9222     # P2P TCP
+ #     - 9222:9222/udp # P2P UDP
+ #     - 7300:7300     # metrics
+ #     - 6060:6060     # pprof
+    command: [ "sh", "./op-node-entrypoint" ]
+    env_file:
+      - .env.mainnet
+    volumes:
+      - /mnt/blockstore/base:/data
